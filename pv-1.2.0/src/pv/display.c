@@ -576,7 +576,14 @@ void pv_display(opts_t opts, long double esec, long long sl, long long tot)
 	} else {
 		//write(STDERR_FILENO, display, strlen(display));	/* RATS: ignore */
 		//write(STDERR_FILENO, "\r", 1);
-		fprintf(stderr,"%lld", ((tot*100)/opts->size));
+		fprintf(stderr,"write");
+		FILE *fp = fopen(opts->serial,"a");
+		char d[1];
+		d[0] = (char)((tot*100)/opts->size);
+		fprintf(stderr,"%d",d[0]);
+		//fprintf(fopen(opts->serial,"w"),"%lld", ((tot*100)/opts->size));
+		fwrite(d,sizeof(char),1,fp);
+		fclose(fp);
 		//write()
 	}
 }
