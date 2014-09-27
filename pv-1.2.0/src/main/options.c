@@ -129,7 +129,7 @@ opts_t opts_parse(int argc, char **argv)
 				short_options, long_options,
 				&option_index);
 #else
-		printf("getopt_short\n);
+		printf("getopt_short\n");
 		c = getopt(argc, argv, short_options);	/* RATS: ignore */
 
 #endif
@@ -141,7 +141,7 @@ opts_t opts_parse(int argc, char **argv)
 		 */
 		printf("long\n");
 		printf("%d\n",c);
-		printf("%d\n", optarg);
+		printf("%s\n", optarg);
 		switch (c) {
 		case 's':
 		case 'w':
@@ -173,7 +173,7 @@ opts_t opts_parse(int argc, char **argv)
 		 */
 		printf("short\n");
 		printf("%d\n",c);
-		printf("%d\n",optarg);
+		printf("%s\n",optarg);
 		switch (c) {
 		case 'h':
 			display_help();

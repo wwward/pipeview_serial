@@ -576,13 +576,18 @@ void pv_display(opts_t opts, long double esec, long long sl, long long tot)
 	} else {
 		//write(STDERR_FILENO, display, strlen(display));	/* RATS: ignore */
 		//write(STDERR_FILENO, "\r", 1);
-		fprintf(stderr,"write");
+		fprintf(stderr,"write\n"); //debug
 		FILE *fp = fopen(opts->serial,"a");
-		char d[1];
-		d[0] = (char)((tot*100)/opts->size);
-		fprintf(stderr,"%d",d[0]);
+		fprintf(stderr,"opened fp\n"); //debug
+		char d[2];
+		fprintf(stderr,"char d declared\n"); //debug
+		//d[0] = (char)((tot*100)/opts->size); //offending
+		d[0] = (char)(50);
+		fprintf(stderr,"attempted to store in d[0]\n"); //debug
+	//	fprintf(stderr,"%d",d[0]);
 		//fprintf(fopen(opts->serial,"w"),"%lld", ((tot*100)/opts->size));
-		fwrite(d,sizeof(char),1,fp);
+		fwrite(d,sizeof(d[0]),1,fp);
+		fprintf(stderr,"attempted to fwrite\n");//debug
 		fclose(fp);
 		//write()
 	}

@@ -53,7 +53,7 @@ UNINSTALL = rm -f
 LDFLAGS = -r
 LINKFLAGS = 
 DEFS = -DHAVE_CONFIG_H -DLOCALEDIR=\"$(localedir)\"
-CFLAGS = -O
+CFLAGS = -O -g3
 CPPFLAGS =  -I$(srcdir)/src/include -Isrc/include $(DEFS)
 LIBS = 
 
